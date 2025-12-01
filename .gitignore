@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Credentials & Tokens (CRITICAL - DO NOT COMMIT!)
+.env
+credentials.json
+token.json
+data/token.json
+data/instagram_cookies.json
+
+# Data Files (Large/Private)
+data/raw_images/
+data/extracted_text/
+data/*.db
+data/*.db-journal
+data/*.csv
+data/*.json
+
+# Logs
+logs/*.log
+*.log
+
+# System Files
+Thumbs.db
+.DS_Store
+
+# Google Apps Script (if exported)
+*.gs.json
+
+# Backup Files
+*.bak
+*.backup
+backup_*
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Playwright
+.playwright/
+
+# SQLite
+*.db-shm
+*.db-wal
+
+# Archives
+*.zip
+*.tar.gz
+*.rar

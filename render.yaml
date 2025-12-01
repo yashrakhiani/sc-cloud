@@ -1,0 +1,29 @@
+services:
+  - type: worker
+    name: structcrew-leadgen
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python daily_runner.py
+    envVars:
+      - key: INSTAGRAM_USERNAME
+        value: archijobs
+      - key: INSTAGRAM_LOGIN_USER
+        sync: false  # Set manually in Render dashboard
+      - key: INSTAGRAM_LOGIN_PASS
+        sync: false  # Set manually in Render dashboard
+      - key: GEMINI_API_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: FROM_EMAIL
+        value: structcrew@gmail.com
+      - key: GMAIL_APP_PASSWORD
+        sync: false  # Set manually in Render dashboard
+      - key: MAX_POSTS
+        value: 200
+      - key: DAILY_EMAIL_LIMIT
+        value: 200
+      - key: HEADLESS
+        value: true
+      - key: USE_CLAUDE
+        value: false
+      - key: VALIDATE_EMAILS
+        value: true

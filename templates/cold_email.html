@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Collaboration</title>
+  <style>
+    /* Reset */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+
+    /* Container */
+    .email-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .header p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* Content */
+    .content {
+      padding: 40px 30px;
+    }
+
+    .content p {
+      margin: 0 0 20px 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .content strong {
+      color: #667eea;
+    }
+
+    /* Benefits List */
+    .benefits {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 20px 25px;
+      margin: 30px 0;
+      border-radius: 8px;
+    }
+
+    .benefits ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .benefits li {
+      margin: 12px 0;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .benefits li::marker {
+      content: "✅ ";
+    }
+
+    /* CTA Button */
+    .cta-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Signature */
+    .signature {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid #eee;
+    }
+
+    .signature p {
+      margin: 5px 0;
+      font-size: 15px;
+    }
+
+    .signature .name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #667eea;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+
+    .footer p {
+      margin: 10px 0;
+      font-size: 13px;
+      color: #777;
+      line-height: 1.5;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .unsubscribe {
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    /* Mobile Responsive */
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        margin: 20px 10px;
+      }
+
+      .header,
+      .content {
+        padding: 30px 20px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .cta-button {
+        padding: 14px 30px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Hi {company}! 👋</h1>
+      <p>Let's elevate your architecture team together</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <p>I came across your job posting on <strong>Instagram (@archijobs)</strong>, and I'm genuinely impressed by the
+        work you're doing!</p>
+
+      <p>I'm <strong>{from_name}</strong>, and I specialize in connecting architecture and design studios with
+        exceptional talent through <strong>StructCrew</strong>.</p>
+
+      <div class="benefits">
+        <p><strong>🚀 Here's how we can help:</strong></p>
+        <ul>
+          <li>Find qualified candidates <strong>3x faster</strong></li>
+          <li>Reduce recruitment costs by <strong>40%</strong></li>
+          <li>Access our curated network of architecture professionals</li>
+          <li>Streamline your hiring process with dedicated support</li>
+        </ul>
+        <p>Looking forward to connecting!</p>
+        <p class="name">{from_name}</p>
+        <p>Founder & Architecture Recruitment Specialist | StructCrew</p>
+        <p>
+          📧 <a href="mailto:structcrew@gmail.com">structcrew@gmail.com</a><br>
+          🌐 <a href="https://www.instagram.com/structcrew">@structcrew</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>
+        <strong>📌 Not interested?</strong><br>
+        No problem! Just reply with "UNSUBSCRIBE" and we'll remove you immediately.
+      </p>
+
+      <p class="unsubscribe">
+        This email was sent to <strong>{email}</strong> because you recently posted a job opening on Instagram.<br>
+        We believe StructCrew's recruitment services could benefit your studio.<br>
+        We respect your inbox and comply with CAN-SPAM & GDPR regulations.
+      </p>
+
+      <p class="unsubscribe">
+        © {current_date} StructCrew. All rights reserved.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
