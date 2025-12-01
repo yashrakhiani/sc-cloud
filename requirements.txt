@@ -4,9 +4,6 @@ requests==2.31.0
 tqdm==4.66.1
 Pillow==10.1.0
 
-# Scraping (Playwright - faster & more reliable than Selenium)
-playwright==1.40.0
-
 # OCR
 pytesseract==0.3.10
 anthropic==0.37.0
