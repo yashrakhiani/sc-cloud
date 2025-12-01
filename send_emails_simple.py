@@ -14,7 +14,11 @@ from datetime import datetime
 import time
 
 # Load environment
-load_dotenv()
+from pathlib import Path
+if Path('.env.production').exists():
+    load_dotenv('.env.production')
+else:
+    load_dotenv()
 
 # Configuration
 GMAIL_EMAIL = os.getenv('FROM_EMAIL', 'structcrew@gmail.com')
