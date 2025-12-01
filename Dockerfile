@@ -5,22 +5,13 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Install system dependencies
-# - tesseract-ocr: For text extraction
-# - chromium: For Playwright scraping
-# - cron: For scheduling (optional)
 RUN apt-get update && apt-get install -y \
-    tesseract-ocr \
-    libtesseract-dev \
-    chromium \
     git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Install Playwright browsers
-RUN playwright install --with-deps chromium
 
 # Install spaCy model
 RUN python -m spacy download en_core_web_sm
