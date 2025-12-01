@@ -20,10 +20,10 @@ def run_pipeline():
     """Runs the complete lead generation pipeline"""
     logging.info("🚀 STARTING DAILY PIPELINE RUN")
     
-    # 1. Scrape Instagram (HTTP + Auth - Fast & Unlimited!)
-    logging.info("📸 Phase 1: Scraping Instagram (HTTP + Auth)...")
+    # 1. Scrape Instagram (Simple - No Login!)
+    logging.info("📸 Phase 1: Scraping Instagram (Simple Mode)...")
     try:
-        subprocess.run(["python", "1_scraper/instagram_scraper_http_auth.py"], check=True)
+        subprocess.run(["python", "1_scraper/instagram_scraper_simple.py"], check=True)
     except subprocess.CalledProcessError as e:
         logging.error(f"Scraping failed: {e}")
         # Continue anyway, maybe we have old images to process

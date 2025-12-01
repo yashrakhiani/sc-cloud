@@ -5,6 +5,10 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Install system dependencies
+<<<<<<< Updated upstream
+=======
+# - tesseract-ocr: For text extraction (optional, we use Gemini)
+>>>>>>> Stashed changes
 RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*

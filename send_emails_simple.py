@@ -14,6 +14,10 @@ from datetime import datetime
 import time
 
 # Load environment
+<<<<<<< Updated upstream
+=======
+# Try production env first, fallback to .env
+>>>>>>> Stashed changes
 from pathlib import Path
 if Path('.env.production').exists():
     load_dotenv('.env.production')
