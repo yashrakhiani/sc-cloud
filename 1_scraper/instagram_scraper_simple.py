@@ -174,7 +174,7 @@ def scrape_from_html(html, session):
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("📸 StructCrew Instagram Scraper (Simple)")
+    print("StructCrew Instagram Scraper (Simple)")
     print("=" * 60)
     print(f"Target: @{TARGET_USERNAME}")
     print(f"Max Posts: {MAX_POSTS}")
@@ -187,5 +187,5 @@ if __name__ == '__main__':
     
     print()
     print("=" * 60)
-    print(f"✅ Scraping complete! Downloaded {result} posts")
+    print(f"Scraping complete! Downloaded {result} posts")
     print("=" * 60)
