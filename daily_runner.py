@@ -16,11 +16,11 @@ logging.basicConfig(
     ]
 )
 
-def run_pipeline():
-    """Runs the complete lead generation pipeline"""
-    logging.info("🚀 STARTING DAILY PIPELINE RUN")
-    
-    # 1. Scrape Instagram
+def run_scraper():
+    """Runs the Instagram scraper (can be scheduled multiple times per day)."""
+    logging.info("🚀 STARTING SCRAPER RUN")
+
+    # Scrape Instagram
     scraper_mode = os.getenv("SCRAPER_MODE", "simple").lower()
     if scraper_mode == "http_auth":
         logging.info("📸 Phase 1: Scraping Instagram (HTTP + Auth)...")
@@ -34,6 +34,11 @@ def run_pipeline():
     except subprocess.CalledProcessError as e:
         logging.error(f"Scraping failed ({scraper_mode}): {e}")
         # Continue anyway, maybe we have old images to process
+
+
+def run_pipeline():
+    """Runs the OCR + extraction + email pipeline (typically once per day)."""
+    logging.info("🚀 STARTING DAILY PIPELINE RUN")
     
     # 2. OCR Processing
     logging.info("🔍 Phase 2: Running OCR...")
@@ -97,13 +102,21 @@ if __name__ == "__main__":
     print("🤖 StructCrew Cloud Automation Agent")
     print("="*60)
     print("Status: RUNNING")
-    print("Schedule: Daily at 09:00 AM UTC")
+    print("Schedule:")
+    print("  - Scraper runs:   03:00, 11:00, 19:00 UTC")
+    print("  - Full pipeline:  09:00 UTC")
     print("="*60)
     
-    # Run once immediately on startup
+    # Run once immediately on startup (scrape + full pipeline)
+    run_scraper()
     run_pipeline()
     
-    # Schedule daily run
+    # Schedule multiple scraper runs per day to maximize new posts
+    schedule.every().day.at("03:00").do(run_scraper)
+    schedule.every().day.at("11:00").do(run_scraper)
+    schedule.every().day.at("19:00").do(run_scraper)
+
+    # Schedule daily full pipeline (OCR + extract + email)
     schedule.every().day.at("09:00").do(run_pipeline)
     
     while True:
