@@ -17,22 +17,14 @@ logging.basicConfig(
 )
 
 def run_scraper():
-    """Runs the Instagram scraper (can be scheduled multiple times per day)."""
+    """Runs the Instagram scraper (simple mode only, safe for cloud)."""
     logging.info("🚀 STARTING SCRAPER RUN")
-
-    # Scrape Instagram
-    scraper_mode = os.getenv("SCRAPER_MODE", "simple").lower()
-    if scraper_mode == "http_auth":
-        logging.info("📸 Phase 1: Scraping Instagram (HTTP + Auth)...")
-        cmd = ["python", "1_scraper/instagram_scraper_http_auth.py"]
-    else:
-        logging.info("📸 Phase 1: Scraping Instagram (Simple Mode)...")
-        cmd = ["python", "1_scraper/instagram_scraper_simple.py"]
+    logging.info("📸 Phase 1: Scraping Instagram (Simple Mode)...")
 
     try:
-        subprocess.run(cmd, check=True)
+        subprocess.run(["python", "1_scraper/instagram_scraper_simple.py"], check=True)
     except subprocess.CalledProcessError as e:
-        logging.error(f"Scraping failed ({scraper_mode}): {e}")
+        logging.error(f"Scraping failed (simple): {e}")
         # Continue anyway, maybe we have old images to process
 
 
