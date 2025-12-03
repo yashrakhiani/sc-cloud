@@ -90,6 +90,24 @@ class AutomationManager:
         logger.info("🌍 PHASE 1: INSTAGRAM SCRAPER (500 posts)")
         logger.info("=" * 70)
         
+        # Check if running on cloud
+        is_cloud = any([
+            os.getenv('RAILWAY_ENVIRONMENT_NAME'),
+            os.getenv('RENDER_GIT_REPO'),
+            os.getenv('GOOGLE_CLOUD_PROJECT')
+        ])
+        
+        if is_cloud:
+            logger.warning("⚠️ Running on cloud - Instagram blocks cloud IPs")
+            logger.warning("⏭️ Skipping scraper (run locally on your computer)")
+            logger.info("📝 To fix: Run scraper locally and push to GitHub:")
+            logger.info("  python 1_scraper/instagram_scraper_pro.py")
+            logger.info("  git add data/raw_images/")
+            logger.info("  git push origin main")
+            self.state['posts_scraped_today'] = 0
+            self.save_state()
+            return
+        
         self.state['current_phase'] = 'scraping'
         self.save_state()
         
